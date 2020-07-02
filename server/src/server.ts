@@ -6,6 +6,8 @@ import { errors } from 'celebrate';
 
 const app = express();
 
+require('dotenv').config();
+
 // Em ambiente de produção, poderia configurar somente o domínio da aplicação front-end que irá consumir
 app.use(cors());
 // Configura o express para reconhecer o formato JSON nas requisições
@@ -17,4 +19,4 @@ app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 
 app.use(errors());
 
-app.listen(3333);
+app.listen(process.env.API_PORT);
